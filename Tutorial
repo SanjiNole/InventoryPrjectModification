@@ -1,0 +1,50 @@
+Step 1: Install the python3-venv package
+The first error message you received, externally-managed-environment, is a security feature that prevents you from installing Python packages globally. The solution is to use a virtual environment. However, your system doesn't have the tool to create one yet.
+
+To fix this, you need to install the python3-venv package using the system's package manager, apt. Because this is a system-wide change, you must use sudo to gain administrative privileges.
+
+In your terminal, run this command:
+
+Bash
+
+sudo apt install python3-venv
+The system will ask for your password. Type it in and press Enter. You won't see the characters as you type, but don't worry, that's normal. Once the installation is complete, you can move on to the next step.
+
+Step 2: Create a virtual environment
+Now that you have the right tool, you can create a dedicated space for your project. This virtual environment will keep your project's dependencies separate from your system's Python files, which is a best practice for development.
+
+While you are in your project folder (~/Downloads/inventory-app), run the following command:
+
+Bash
+
+python3 -m venv .venv
+This will create a new folder named .venv in your project's directory. This folder is your new, isolated environment.
+
+Step 3: Activate the virtual environment
+To use this new environment, you need to "activate" it. This tells your terminal to use the Python and pip from your project's folder instead of the ones installed on your entire system.
+
+Run this command:
+
+Bash
+
+source .venv/bin/activate
+You'll know it worked because your command prompt will change to include (.venv) at the start of the line.
+
+Step 4: Install the required packages
+With the virtual environment active, you can now safely install the libraries that your app needs, like Flask, without any permissions errors. The requirements.txt file in your project folder lists all of these libraries.
+
+Run this command to install them:
+
+Bash
+
+pip install -r requirements.txt
+This will read the requirements.txt file, download the necessary libraries, and install them into your new .venv folder.
+
+Step 5: Run the app.py file
+Now that all the dependencies are installed in the right place, you can finally run your application.
+
+Run this command:
+
+Bash
+
+python app.py
